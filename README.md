@@ -46,10 +46,15 @@ This Python script allows you to check the reputation of IP addresses and domain
     anotherexample.com
     ```
 
-2. Run the script:
+2.1 Run the script (Linux & Mac):
 
     ```bash
     python3 vt.py
+    ```
+2.2 Run the script (Windows):
+
+    ```bash
+    python vt.py
     ```
 
 3. Follow the on-screen menu to choose the type of check you want to perform:
