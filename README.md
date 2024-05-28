@@ -6,7 +6,7 @@ This Python script allows you to check the reputation of IP addresses and domain
 
 - Fetches detailed information about IP addresses and domains from VirusTotal.
 - Provides security details (reputation score, malicious counts, etc.).
-- Outputs results to timestamped files in the `output` directory.
+- Outputs results to timestamped files in the `output` directory. (the output directory will be created on your first run)
 
 ## Prerequisites
 
