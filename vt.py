@@ -1,9 +1,18 @@
 import sys
+import os
 from includes.single_ip import display_ip_info
 from includes.single_domain import display_domain_info
 from includes.ip_domain_list import process_ip_or_domain_list
 
+# Ensure the output directories exist
+def ensure_directories():
+    os.makedirs('output/single-ip', exist_ok=True)
+    os.makedirs('output/single-domain', exist_ok=True)
+    os.makedirs('output/domain-ip-lists', exist_ok=True)
+
 def main():
+    ensure_directories()
+    
     while True:
         print("\n----------------")
         print("MENU")
