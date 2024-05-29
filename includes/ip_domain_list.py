@@ -45,7 +45,12 @@ def get_ip_summary(ip):
         return f"IP: {ip} - No data"
 
     attributes = data.get('data', {}).get('attributes', {})
-    return f"IP: {ip}, Reputation Score: {attributes.get('reputation')}, Country: {attributes.get('country')}, Total Votes: Harmless - {attributes.get('total_votes', {}).get('harmless', 0)}, Malicious - {attributes.get('total_votes', {}).get('malicious', 0)}"
+    last_analysis_results = attributes.get('last_analysis_results', {})
+    malicious_count = sum(1 for result in last_analysis_results.values() if result['category'] == 'malicious')
+    total_engines = len(last_analysis_results)
+    reputation_score = f"{malicious_count}/{total_engines}" if total_engines > 0 else "N/A"
+
+    return f"IP: {ip}, Reputation: {reputation_score}, Last Analysis Count: {malicious_count}, Malicious Count: {malicious_count}, Total Engines: {total_engines}"
 
 def get_domain_summary(domain):
     url = API_URL_DOMAIN + urllib.parse.quote(domain)
@@ -54,7 +59,12 @@ def get_domain_summary(domain):
         return f"Domain: {domain} - No data"
 
     attributes = data.get('data', {}).get('attributes', {})
-    return f"Domain: {domain}, Reputation Score: {attributes.get('reputation')}, Country: {attributes.get('country')}, Total Votes: Harmless - {attributes.get('total_votes', {}).get('harmless', 0)}, Malicious - {attributes.get('total_votes', {}).get('malicious', 0)}"
+    last_analysis_results = attributes.get('last_analysis_results', {})
+    malicious_count = sum(1 for result in last_analysis_results.values() if result['category'] == 'malicious')
+    total_engines = len(last_analysis_results)
+    reputation_score = f"{malicious_count}/{total_engines}" if total_engines > 0 else "N/A"
+
+    return f"Domain: {domain}, Reputation: {reputation_score}, Last Analysis Count: {malicious_count}, Malicious Count: {malicious_count}, Total Engines: {total_engines}"
 
 def read_ips_from_file(file_path):
     items = []
