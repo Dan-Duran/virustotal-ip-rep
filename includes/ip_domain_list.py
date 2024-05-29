@@ -50,7 +50,7 @@ def get_ip_summary(ip):
     total_engines = len(last_analysis_results)
     reputation_score = f"{malicious_count}/{total_engines}" if total_engines > 0 else "N/A"
 
-    return f"IP: {ip}, Reputation: {reputation_score}, Last Analysis Count: {malicious_count}, Malicious Count: {malicious_count}, Total Engines: {total_engines}"
+    return f"IP: {ip}, Country: {attributes.get('country')}, Last Analysis Results Count: {malicious_count}, Malicious Count: {malicious_count}, Total Engines: {total_engines}, Reputation Score: {reputation_score}"
 
 def get_domain_summary(domain):
     url = API_URL_DOMAIN + urllib.parse.quote(domain)
@@ -64,7 +64,7 @@ def get_domain_summary(domain):
     total_engines = len(last_analysis_results)
     reputation_score = f"{malicious_count}/{total_engines}" if total_engines > 0 else "N/A"
 
-    return f"Domain: {domain}, Reputation: {reputation_score}, Last Analysis Count: {malicious_count}, Malicious Count: {malicious_count}, Total Engines: {total_engines}"
+    return f"Domain: {domain}, Country: {attributes.get('country')}, Last Analysis Results Count: {malicious_count}, Malicious Count: {malicious_count}, Total Engines: {total_engines}, Reputation Score: {reputation_score}"
 
 def read_ips_from_file(file_path):
     items = []
